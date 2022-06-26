@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="laste">
+    <Application name="KNIME" version="4.5.2"/>
+  </Header>
+  <DataDictionary numberOfFields="5">
+    <DataField name="sepal_length" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="4.3" rightMargin="7.9"/>
+    </DataField>
+    <DataField name="sepal_width" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="2.0" rightMargin="4.4"/>
+    </DataField>
+    <DataField name="petal_length" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="1.0" rightMargin="6.9"/>
+    </DataField>
+    <DataField name="petal_width" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.1" rightMargin="2.5"/>
+    </DataField>
+    <DataField name="class" optype="categorical" dataType="string">
+      <Value value="Iris-setosa"/>
+      <Value value="Iris-versicolor"/>
+      <Value value="Iris-virginica"/>
+    </DataField>
+  </DataDictionary>
+  <ClusteringModel modelName="k-means" functionName="clustering" modelClass="centerBased" numberOfClusters="3">
+    <MiningSchema>
+      <MiningField name="sepal_length" invalidValueTreatment="asIs"/>
+      <MiningField name="sepal_width" invalidValueTreatment="asIs"/>
+      <MiningField name="petal_length" invalidValueTreatment="asIs"/>
+      <MiningField name="petal_width" invalidValueTreatment="asIs"/>
+    </MiningSchema>
+    <ComparisonMeasure kind="distance">
+      <squaredEuclidean/>
+    </ComparisonMeasure>
+    <ClusteringField field="sepal_length" compareFunction="absDiff"/>
+    <ClusteringField field="sepal_width" compareFunction="absDiff"/>
+    <ClusteringField field="petal_length" compareFunction="absDiff"/>
+    <ClusteringField field="petal_width" compareFunction="absDiff"/>
+    <Cluster name="cluster_0" size="36">
+      <Array n="4" type="real">6.822222222222222 3.0611111111111104 5.7111111111111095 2.063888888888888 </Array>
+    </Cluster>
+    <Cluster name="cluster_1" size="59">
+      <Array n="4" type="real">5.884745762711864 2.732203389830509 4.389830508474577 1.4372881355932203 </Array>
+    </Cluster>
+    <Cluster name="cluster_2" size="47">
+      <Array n="4" type="real">5.025531914893617 3.429787234042553 1.4702127659574467 0.24680851063829784 </Array>
+    </Cluster>
+  </ClusteringModel>
+</PMML>

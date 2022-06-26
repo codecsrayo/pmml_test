@@ -1,0 +1,13 @@
+FROM tiangolo/uvicorn-gunicorn:python3.9-slim
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+WORKDIR /usr/src/app
+COPY ./requirements.txt /usr/src/app/requirements.txt
+
+RUN apt update -y && apt-get install -y software-properties-common && \
+    apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && apt update -y && \
+    apt-get install -y openjdk-8-jdk-headless && \
+    pip install --no-cache-dir -r requirements.txt && \
+    export JAVA_HOME && \
+    apt-get clean
+
+

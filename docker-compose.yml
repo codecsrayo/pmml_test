@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  test:
+    build:
+      context:  ./src
+    tty: true
+    volumes:
+      - ./src:/usr/src/app
+    
